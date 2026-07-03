@@ -1,0 +1,503 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=Patrick+Hand&display=swap");
+
+.preview-modal-backdrop {
+position: fixed;
+inset: 0;
+z-index: 9999;
+background: rgba(15, 12, 10, 0.72);
+backdrop-filter: blur(10px);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 24px;
+}
+
+.preview-modal {
+width: min(1320px, 100%);
+max-height: 92vh;
+overflow: auto;
+background: linear-gradient(180deg, #fff9eb 0%, #f6eac4 100%);
+border: 3px solid #1f1a17;
+box-shadow: 16px 16px 0 #1f1a17;
+}
+
+.preview-modal-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+padding: 20px 24px;
+border-bottom: 3px solid #1f1a17;
+background: rgba(255, 255, 255, 0.38);
+}
+
+.preview-kicker {
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: #6f604d;
+margin-bottom: 6px;
+font-family: "Inter", sans-serif;
+}
+
+.preview-modal-header h2 {
+font-size: 1.4rem;
+font-weight: 800;
+color: #1f1a17;
+font-family: "Inter", sans-serif;
+}
+
+.preview-close {
+width: 42px;
+height: 42px;
+border: 2px solid #1f1a17;
+background: #fff7df;
+color: #1f1a17;
+display: grid;
+place-items: center;
+cursor: pointer;
+}
+
+.preview-modal-body {
+display: grid;
+grid-template-columns: 340px 1fr;
+gap: 0;
+min-height: 760px;
+}
+
+.preview-editor {
+padding: 20px;
+border-right: 3px solid #1f1a17;
+background: rgba(255, 255, 255, 0.22);
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.mode-switch {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+
+.mode-switch button,
+.download-btn,
+.shuffle-btn,
+.toggle {
+border: 2px solid #1f1a17;
+background: #fff7df;
+color: #1f1a17;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+cursor: pointer;
+transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+font-family: "Inter", sans-serif;
+}
+
+.mode-switch button,
+.toggle {
+min-height: 48px;
+}
+
+.mode-switch button.active,
+.toggle.active {
+background: #f0c95a;
+box-shadow: 0 4px 0 #1f1a17;
+}
+
+.tactile-group {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.toggle {
+padding: 10px 14px;
+}
+
+.field {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.field span {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: #6f604d;
+font-family: "Inter", sans-serif;
+}
+
+.field input,
+.field textarea {
+width: 100%;
+border: 2px solid #1f1a17;
+background: #fffdf6;
+color: #1f1a17;
+padding: 12px 14px;
+outline: none;
+resize: none;
+font-family: "Caveat", cursive;
+font-size: 1.3rem;
+letter-spacing: 0.02em;
+line-height: 1.15;
+}
+
+.handwritten-date input {
+font-family: "Patrick Hand", cursive;
+font-size: 1.05rem;
+}
+
+.handwritten-caption input {
+font-family: "Caveat", cursive;
+font-size: 1.45rem;
+}
+
+.handwritten-statement textarea {
+font-family: "Patrick Hand", cursive;
+font-size: 1.05rem;
+}
+
+.field input:focus,
+.field textarea:focus {
+box-shadow: 0 0 0 3px rgba(240, 201, 90, 0.35);
+}
+
+.color-group {
+display: grid;
+gap: 12px;
+}
+
+.color-block {
+display: grid;
+gap: 8px;
+}
+
+.color-label {
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: #6f604d;
+font-family: "Inter", sans-serif;
+}
+
+.swatch-row {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.swatch {
+width: 28px;
+height: 28px;
+border: 2px solid #1f1a17;
+cursor: pointer;
+box-shadow: 0 2px 0 rgba(31, 26, 23, 0.2);
+}
+
+.swatch.active {
+outline: 3px solid #1f1a17;
+outline-offset: 2px;
+}
+
+.actions {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: auto;
+}
+
+.download-btn,
+.shuffle-btn {
+min-height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+
+.download-btn:hover,
+.shuffle-btn:hover,
+.preview-close:hover,
+.mode-switch button:hover,
+.toggle:hover {
+transform: translateY(-2px);
+}
+
+.download-btn:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+transform: none;
+}
+
+.mobile-note {
+font-size: 0.82rem;
+line-height: 1.5;
+color: #6f604d;
+border: 2px dashed #6f604d;
+padding: 14px;
+background: rgba(255, 255, 255, 0.28);
+font-family: "Inter", sans-serif;
+}
+
+.preview-stage {
+padding: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: auto;
+}
+
+.polaroid-shell {
+width: min(100%, 760px);
+background: #fffdf6;
+border: 18px solid #ffffff;
+box-shadow: 0 20px 40px rgba(31, 26, 23, 0.18);
+color: #1f1a17;
+}
+
+.polaroid-inner {
+display: flex;
+flex-direction: column;
+min-height: 100%;
+}
+
+.polaroid-frame-top,
+.polaroid-frame-bottom {
+padding: 14px 18px;
+display: flex;
+justify-content: space-between;
+gap: 12px;
+}
+
+.polaroid-frame-top {
+border-bottom: 2px solid rgba(31, 26, 23, 0.12);
+}
+
+.polaroid-frame-bottom {
+border-top: 2px solid rgba(31, 26, 23, 0.12);
+min-height: 92px;
+align-items: center;
+}
+
+.polaroid-frame-top span,
+.polaroid-frame-bottom p {
+font-family: "Caveat", cursive;
+font-size: 1.35rem;
+line-height: 1.1;
+}
+
+.polaroid-frame-top span:last-child {
+font-family: "Patrick Hand", cursive;
+font-size: 1.02rem;
+white-space: nowrap;
+}
+
+.polaroid-frame-bottom p {
+margin: 0;
+}
+
+.polaroid-strip {
+display: grid;
+gap: 14px;
+padding: 18px;
+}
+
+.strip-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+min-height: 190px;
+}
+
+.strip-row img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border: 2px solid #1f1a17;
+background: #fff;
+}
+
+.moodboard-shell {
+position: relative;
+width: min(100%, 820px);
+aspect-ratio: 1 / 1;
+border: 14px solid #ffffff;
+background: #fffaf2;
+box-shadow: 0 20px 40px rgba(31, 26, 23, 0.18);
+overflow: hidden;
+}
+
+.moodboard-inner {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.moodboard-note {
+position: absolute;
+left: 18px;
+top: 18px;
+z-index: 4;
+display: flex;
+flex-direction: column;
+gap: 4px;
+padding: 12px 14px;
+background: rgba(255, 250, 240, 0.95);
+border: 2px solid #1f1a17;
+}
+
+.moodboard-note strong,
+.moodboard-note span {
+font-family: "Caveat", cursive;
+font-size: 1.2rem;
+line-height: 1.1;
+}
+
+.moodboard-note span {
+font-family: "Patrick Hand", cursive;
+font-size: 0.98rem;
+color: #6f604d;
+}
+
+.moodboard-canvas {
+position: absolute;
+inset: 0;
+}
+
+.mood-card {
+position: absolute;
+background: #fffdf7;
+border: 2px solid #1f1a17;
+box-shadow: 0 14px 24px rgba(31, 26, 23, 0.18);
+transform-origin: center center;
+overflow: visible;
+}
+
+.mood-card-taped::before,
+.mood-card-taped::after {
+content: "";
+position: absolute;
+width: 42px;
+height: 14px;
+background: rgba(255, 245, 210, 0.82);
+border: 1px solid rgba(31, 26, 23, 0.22);
+top: -8px;
+z-index: 3;
+}
+
+.mood-card-taped::before {
+left: 14px;
+transform: rotate(-6deg);
+}
+
+.mood-card-taped::after {
+right: 14px;
+transform: rotate(7deg);
+}
+
+.tape {
+position: absolute;
+width: 38px;
+height: 12px;
+background: rgba(255, 244, 203, 0.88);
+border: 1px solid rgba(31, 26, 23, 0.18);
+z-index: 3;
+}
+
+.tape-left {
+top: -6px;
+left: 16px;
+transform: rotate(-8deg);
+}
+
+.tape-right {
+top: -6px;
+right: 16px;
+transform: rotate(8deg);
+}
+
+.mood-pair {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6px;
+padding: 6px;
+width: 100%;
+height: 100%;
+}
+
+.mood-pair img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border: 1px solid #1f1a17;
+filter: saturate(0.95) contrast(0.98);
+}
+
+.moodboard-footer {
+position: absolute;
+left: 18px;
+right: 18px;
+bottom: 18px;
+z-index: 4;
+padding: 12px 14px;
+background: rgba(255, 250, 240, 0.95);
+border: 2px solid #1f1a17;
+font-family: "Patrick Hand", cursive;
+font-size: 1.05rem;
+line-height: 1.4;
+font-weight: 400;
+color: #1f1a17;
+}
+
+@media (max-width: 1080px) {
+.preview-modal-body {
+    grid-template-columns: 1fr;
+}
+
+.preview-editor {
+    border-right: none;
+    border-bottom: 3px solid #1f1a17;
+}
+
+.moodboard-shell {
+    width: 100%;
+}
+}
+
+@media (max-width: 720px) {
+.preview-modal {
+    max-height: 96vh;
+    box-shadow: 10px 10px 0 #1f1a17;
+}
+
+.preview-modal-backdrop {
+    padding: 10px;
+}
+
+.preview-stage {
+    padding: 14px;
+}
+
+.polaroid-frame-top,
+.polaroid-frame-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mood-card {
+    width: 180px;
+}
+
+.strip-row {
+    min-height: 150px;
+}
+}

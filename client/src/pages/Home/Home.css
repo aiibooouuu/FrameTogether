@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
+.home {
+
+    min-height: 100vh;
+        background:var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+/* ===========================
+   Background Texture
+=========================== */
+
+.texture {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .045;
+
+    background:
+        linear-gradient(rgb(from var(--paper) r g b / .35) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(from var(--paper) r g b / .35) 1px, transparent 1px);
+
+    background-size: 32px 32px;
+
+}
+
+.texture::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, rgb(from var(--paper) r g b / .18) 1px, transparent 1px);
+
+    background-size: 14px 14px;
+
+    opacity: .25;
+
+}
+
+/* ===========================
+   Hero
+=========================== */
+
+.hero {
+
+    width: min(1100px, 90%);
+
+    z-index: 2;
+
+    text-align: center;
+
+}
+
+.eyebrow {
+
+    color: var(--accent);
+
+    font-size: .9rem;
+
+    font-weight: 700;
+
+    letter-spacing: .4rem;
+
+    margin-bottom: 20px;
+
+}
+
+.hero h1 {
+
+    font-family: "Bitcount Grid Double", sans-serif;
+
+    font-size: clamp(6rem, 10vw, 9rem);
+
+    font-weight: 500;
+
+    color: var(--paper);
+
+    line-height: .9;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+
+}
+
+.hero h1 span {
+
+    color: var(--accent);
+
+}
+
+.subtitle {
+
+    max-width: 520px;
+
+    margin: auto;
+
+    margin-bottom: 80px;
+
+    color: rgb(from var(--paper) r g b / .8);
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+}
+
+/* ===========================
+   Polaroids
+=========================== */
+
+.polaroids {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 90px;
+
+    flex-wrap: wrap;
+
+}
+
+.polaroid {
+
+    width: 260px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    background: var(--paper);
+
+    color: var(--text);
+
+    transition: .35s ease;
+
+    box-shadow: 12px 12px 0 var(--shadow);
+
+}
+
+.left {
+
+    transform: rotate(-5deg);
+
+}
+
+.right {
+
+    transform: rotate(12deg);
+
+}
+
+
+.left:hover {
+
+    transform:
+        translateY(-15px)
+        rotate(-1deg);
+
+}
+
+.right:hover {
+
+    transform:
+        translateY(-15px)
+        rotate(1deg);
+
+}
+
+/* ===========================
+   Tape
+=========================== */
+
+.tape {
+
+    position: absolute;
+
+    top: -12px;
+    left: 50%;
+
+    width: 90px;
+    height: 22px;
+
+    transform:
+        translateX(-50%)
+        rotate(-6deg);
+
+    background: rgb(from var(--paper-mid) r g b / .85);
+
+    border: 1px solid rgb(from var(--black) r g b / .08);
+
+    box-shadow: inset 0 0 2px rgb(from var(--black) r g b / .15);
+
+    opacity: .95;
+
+    z-index: 5;
+
+}
+
+/* ===========================
+   Photo Area
+=========================== */
+
+.photo {
+
+    height: 250px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+    border: 12px solid var(--paper);
+    background: var(--paper-light);
+    transition: .3s ease;
+
+}
+
+.photoIcon {
+
+    font-size: 4.5rem;
+
+    color: var(--caramel);
+
+}
+
+.polaroid:hover .photo {
+
+    background: var(--paper-highlight);
+
+}
+
+/* ===========================
+   Caption
+=========================== */
+
+.caption {
+
+    padding: 20px;
+
+    text-align: left;
+
+}
+
+.caption h2 {
+
+    margin-bottom: 8px;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    color: var(--text);
+
+}
+
+.caption p {
+
+    color: var(--bg-light);
+
+    font-size: .9rem;
+
+    line-height: 1.6;
+
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+footer {
+
+    margin-top: 80px;
+
+    padding-top: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    border-top: 1px solid rgb(from var(--paper) r g b / .15);
+
+    color: rgb(from var(--paper) r g b / .6);
+
+    font-size: .8rem;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 900px) {
+
+    .polaroids {
+
+        gap: 60px;
+
+    }
+
+    footer {
+
+        justify-content: center;
+
+        text-align: center;
+
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .hero h1 {
+
+        font-size: 3.5rem;
+
+    }
+
+    .subtitle {
+
+        margin-bottom: 60px;
+
+    }
+
+    .polaroid {
+
+        width: 220px;
+
+    }
+
+    .photo {
+
+        height: 210px;
+
+    }
+
+    .photoIcon {
+
+        font-size: 3.8rem;
+
+    }
+
+}

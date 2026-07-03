@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background: var(--bg-dark);
+  color: white;
+}
+:root{
+
+    /* ===========================
+       Whipped Butter
+    =========================== */
+
+    --paper-highlight: #FFF8E7;
+    --paper-light: #FAF3D5;
+    --paper: #F2E6B3;
+    --paper-mid: #E8D89F;
+    --paper-shadow: #D8C98F;
+    --paper-warm: #CFAF7C;
+    --paper-deep: #C4B278;
+    --paper-dark: #A38F5E;
+
+    /* ===========================
+       Cookie Crumble
+    =========================== */
+
+    --bg-light: #7A5545;
+    --bg-medium: #654132;
+    --bg: #4B2E21;
+    --bg-shadow: #3B2419;
+    --bg-dark: #2F1B13;
+    --bg-deep: #1E110C;
+
+    /* ===========================
+       Accents
+    =========================== */
+
+    --gold: #C89B3C;
+    --caramel: #B97A3D;
+    --latte: #C8A67E;
+
+    /* ===========================
+       Utility
+    =========================== */
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --success: #3BB273;
+    --danger: #C62839;
+
+    --transition: .25s ease;
+
+}

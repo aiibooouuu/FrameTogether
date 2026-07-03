@@ -1,0 +1,339 @@
+.create-room{
+
+    min-height:100vh;
+
+    background:var(--bg);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+
+    font-family:"Poppins",sans-serif;
+
+}
+
+.paper-card{
+
+    position:relative;
+
+    width:620px;
+
+    background:var(--paper-light);
+
+    padding:50px;
+
+    box-shadow:14px 14px 0 var(--bg-deep);
+
+    border:2px solid rgba(0,0,0,.08);
+
+}
+
+/* Tape */
+
+.paper-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-12px;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+
+    width:130px;
+    height:24px;
+
+    background:rgba(232,216,159,.8);
+
+    border:1px solid rgba(0,0,0,.08);
+
+}
+
+/* Heading */
+
+.paper-card h1{
+
+    font-size:2.6rem;
+
+    color:var(--bg);
+
+    margin-bottom:45px;
+
+    text-align:center;
+
+}
+
+/* Back */
+
+.back-btn{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    color:var(--bg);
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    margin-bottom:35px;
+
+    transition:var(--transition);
+
+}
+
+.back-btn:hover{
+
+    transform:translateX(-5px);
+
+    color:var(--gold);
+
+}
+
+/* Sections */
+
+.section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:35px;
+
+}
+
+.section label{
+
+    font-size:.9rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-weight:700;
+
+    color:var(--bg-light);
+
+}
+
+.section input{
+
+    width:100%;
+
+    padding:16px;
+
+    background:var(--white);
+
+    border:2px solid var(--paper-shadow);
+
+    outline:none;
+
+    font-size:1rem;
+
+    transition:var(--transition);
+
+}
+
+.section input:focus{
+
+    border-color:var(--gold);
+
+}
+
+/* Secondary Button */
+
+.secondary-btn{
+
+    align-self:flex-start;
+
+    margin-top:10px;
+
+    border:none;
+
+    padding:10px 18px;
+
+    background:var(--bg);
+
+    color:var(--white);
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.secondary-btn:hover{
+
+    background:var(--caramel);
+
+}
+
+/* Code Box */
+
+.code-box{
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    background:var(--white);
+
+    border:2px dashed var(--paper-dark);
+
+    padding:18px;
+
+}
+
+.code-box span{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    color:var(--bg);
+
+}
+
+/* Copy Button */
+
+.copy-btn{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:.6rem;
+
+    border:none;
+
+    padding:10px 18px;
+
+    background:var(--gold);
+
+    color:var(--white);
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.copy-btn svg{
+
+    font-size:1rem;
+
+}
+
+.copy-btn:hover{
+
+    background:var(--caramel);
+
+}
+
+.copy-btn.copied{
+
+    background:var(--success);
+
+}
+
+/* Info */
+
+.info{
+
+    line-height:1.8;
+
+    color:var(--bg-medium);
+
+    margin-bottom:45px;
+
+}
+
+/* Continue */
+
+.continue-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    background:var(--bg);
+
+    color:var(--white);
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.continue-btn:hover{
+
+    background:var(--gold);
+
+    color:var(--bg-deep);
+
+    transform:translateY(-2px);
+
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    .paper-card{
+
+        width:100%;
+
+        padding:30px;
+
+    }
+
+    .paper-card h1{
+
+        font-size:2rem;
+
+    }
+
+    .code-box{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .continue-btn,
+    .copy-btn,
+    .secondary-btn{
+
+        width:100%;
+
+    }
+
+}

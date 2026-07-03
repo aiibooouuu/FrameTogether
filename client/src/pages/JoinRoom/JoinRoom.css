@@ -1,0 +1,133 @@
+.join-room{
+    min-height:100vh;
+    background:var(--bg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    font-family:"Poppins",sans-serif;
+}
+
+.paper-card{
+    position:relative;
+    width:620px;
+    background:var(--paper-light);
+    padding:50px;
+    box-shadow:14px 14px 0 var(--bg-deep);
+    border:2px solid rgba(0,0,0,.08);
+}
+
+.paper-card::before{
+    content:"";
+    position:absolute;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%) rotate(-3deg);
+    width:130px;
+    height:24px;
+    background:rgba(232,216,159,.8);
+    border:1px solid rgba(0,0,0,.08);
+}
+
+.back-btn{
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--bg);
+    font-size:.95rem;
+    font-weight:600;
+    margin-bottom:25px;
+    transition:var(--transition);
+}
+
+.back-btn:hover{
+    color:var(--gold);
+    transform:translateX(-5px);
+}
+
+.join-icon{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:var(--gold);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2.5rem;
+    margin-bottom:25px;
+}
+
+.paper-card h1{
+    text-align:center;
+    color:var(--bg);
+    margin-bottom:12px;
+    font-size:2.6rem;
+}
+
+.join-subtitle{
+    text-align:center;
+    color:var(--bg-medium);
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.section{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.section label{
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--bg-light);
+}
+
+.section input{
+    padding:18px;
+    font-size:1.2rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    border:2px solid var(--paper-shadow);
+    background:var(--white);
+    outline:none;
+    transition:var(--transition);
+}
+
+.section input:focus{
+    border-color:var(--gold);
+}
+
+.continue-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    background:var(--bg);
+    color:white;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:700;
+    transition:var(--transition);
+}
+
+.continue-btn:hover{
+    background:var(--gold);
+    color:var(--bg);
+}
+
+.continue-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+@media(max-width:700px){
+    .paper-card{
+        width:100%;
+        padding:30px;
+    }
+}
