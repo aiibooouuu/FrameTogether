@@ -20,7 +20,17 @@ initializeSocket(server);
    Middleware
 ========================================================== */
 
-app.use(cors());
+const allowedOrigins = [
+  "https://frame-together.vercel.app",
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 /* ==========================================================

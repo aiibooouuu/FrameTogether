@@ -20,9 +20,12 @@ import registerSessionSocket from "./sessionSocket.js";
 export default function initializeSocket(server) {
     const io = new Server(server, {
         cors: {
-            origin: "*",
-            methods: ["GET", "POST"]
-        }
+            origin: [
+                "https://frame-together.vercel.app",
+                "http://localhost:5173",
+            ],
+            methods: ["GET", "POST"],
+        },
     });
     io.on(EVENTS.CONNECTION, (socket) => {
         console.log(`🟢 Socket Connected : ${socket.id}`);

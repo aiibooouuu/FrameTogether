@@ -192,10 +192,10 @@ coolblue: {
     category: "Creative",
 
     css:
-        "hue-rotate(8deg) saturate(.9) contrast(1.02) brightness(1.01)",
+        "hue-rotate(175deg) saturate(1) contrast(1.02) brightness(1.01)",
 
     canvas:
-        "hue-rotate(8deg) saturate(.9) contrast(1.02) brightness(1.01)",
+        "hue-rotate(175deg) saturate(1) contrast(1.02) brightness(1.01)",
 
     gradient:
         "linear-gradient(135deg,#9eb7d8 0%,#6f8fb8 100%)",
