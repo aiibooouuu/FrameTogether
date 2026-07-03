@@ -295,19 +295,14 @@ http://localhost:5173
 - Retake Flow
 - Responsive Booth Layout
 - Design System
-
----
-
-## 🚧 Next
-
 - WebRTC Polish
 - Live Chat Refinement
 - Countdown Animation
 - Camera Flash Animation
 - Photo Strip Export Pipeline
 - High Resolution Download
-
 ---
+
 
 ## 💡 Future Ideas
 
