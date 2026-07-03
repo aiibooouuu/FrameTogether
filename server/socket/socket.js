@@ -23,6 +23,7 @@ export default function initializeSocket(server) {
             origin: [
                 "https://frame-together.vercel.app",
                 "http://localhost:5173",
+                "https://frame-together-2oqb.vercel.app",
             ],
             methods: ["GET", "POST"],
         },
