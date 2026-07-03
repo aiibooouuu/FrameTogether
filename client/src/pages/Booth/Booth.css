@@ -5,15 +5,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Inter:wght@400;500;600;700;800&display=swap");
 
 /* ==========================================================================
+   0. Viewport Lock
+   ========================================================================== */
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ==========================================================================
    1. Layout Shell
    ========================================================================== */
 
 .booth {
-  min-height: 100vh;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 24px;
+  overflow: hidden;
   background: var(--bg-dark);
   color: var(--bg-deep);
   font-family: "Inter", sans-serif;
@@ -22,7 +38,8 @@
 .booth-shell {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 80px);
+  height: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -48,9 +65,11 @@
   z-index: 2;
   width: 100%;
   flex: 1;
+  min-height: 0;
   min-width: 0;
   display: grid;
   grid-template-columns: 280px 1fr 260px;
+  overflow: hidden;
 }
 
 /* ==========================================================================
@@ -60,6 +79,7 @@
 .booth-header {
   position: relative;
   z-index: 2;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,6 +92,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
 }
 
 .booth-header h1 {
@@ -80,12 +101,14 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--bg-deep);
+  white-space: nowrap;
 }
 
 .divider {
   width: 2px;
   height: 18px;
   background: var(--paper-dark);
+  flex-shrink: 0;
 }
 
 .room-name {
@@ -94,6 +117,9 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--bg-deep);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .room-code-pill {
@@ -105,12 +131,14 @@
   background: var(--paper-mid);
   border: 1px solid var(--bg-deep);
   border-radius: 0;
+  white-space: nowrap;
 }
 
 .header-right {
   display: flex;
   align-items: center;
   gap: 22px;
+  flex-shrink: 0;
 }
 
 .status {
@@ -157,22 +185,27 @@
 
 .sidebar {
   height: 100%;
+  min-height: 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-dark) transparent;
   background: var(--paper-light);
   border-right: 3px solid var(--bg-deep);
 }
 
 .panel-section {
   position: relative;
+  flex-shrink: 0;
   padding: 20px;
   border-bottom: 2px solid var(--paper-dark);
 }
 
 .panel-section.chat {
   flex: 1;
-  min-height: 0;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
   border-bottom: none;
@@ -204,6 +237,7 @@
 
 .room-code span {
   flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   padding: 0 12px;
@@ -212,11 +246,15 @@
   letter-spacing: 0.06em;
   color: var(--bg-deep);
   background: var(--paper);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .room-code button {
   width: 38px;
   height: 38px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,7 +304,7 @@
 
 .messages {
   flex: 1;
-  min-height: 220px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -340,6 +378,7 @@
 }
 
 .chat-input {
+  flex-shrink: 0;
   display: flex;
   border: 2px solid var(--bg-deep);
 }
@@ -386,17 +425,21 @@
 .workspace {
   position: relative;
   height: 100%;
+  min-height: 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 24px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-dark) transparent;
   background: var(--paper-light);
 }
 
 .cameras {
   flex: 1.2;
-  min-height: 0;
+  min-height: 260px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -422,6 +465,7 @@
 
 .camera-title {
   height: 40px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -489,6 +533,7 @@
 }
 
 .capture-btn {
+  flex-shrink: 0;
   width: 100%;
   height: 56px;
   display: flex;
@@ -517,21 +562,32 @@
   transform: translateY(2px);
 }
 
+.capture-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
 /* ==========================================================================
    5. Controls Panel
    ========================================================================== */
 
 .controls {
   height: 100%;
+  min-height: 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-dark) transparent;
   background: var(--paper-light);
   border-left: 3px solid var(--bg-deep);
 }
 
 .control {
+  flex-shrink: 0;
   min-width: 0;
   padding: 20px;
   border-bottom: 2px solid var(--paper-dark);
@@ -561,7 +617,7 @@
 .filter-deck {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -572,7 +628,7 @@
   grid-template-rows: auto auto auto;
   align-items: start;
   gap: 6px;
-  padding: 6px;
+  padding: 8px;
   text-align: left;
   font-family: inherit;
   background: var(--paper);
@@ -580,6 +636,11 @@
   border-radius: 0;
   cursor: pointer;
   transition: var(--transition);
+}
+
+.filter-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .filter-swatch {
@@ -604,7 +665,7 @@
 }
 
 .filter-text {
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   line-height: 1.15;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -616,8 +677,8 @@
 
 .filter-meta {
   min-height: 2.4em;
-  font-size: 0.52rem;
-  line-height: 1.2;
+  font-size: 0.58rem;
+  line-height: 1.25;
   letter-spacing: 0.01em;
   text-align: center;
   color: var(--paper-dark);
@@ -655,6 +716,11 @@
 
 .switch-key:hover {
   background: var(--paper-mid);
+}
+
+.switch-key:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .switch-key .switch-face {
@@ -698,6 +764,10 @@
 .layout-card:hover {
   background: var(--paper-mid);
   transform: translateY(-2px);
+}
+
+.layout-card:disabled {
+  cursor: not-allowed;
 }
 
 .layout-card.active {
@@ -772,13 +842,13 @@
   margin-top: 8px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: minmax(110px, 1fr);
+  grid-auto-rows: minmax(90px, 1fr);
   gap: 12px;
 }
 
 .preview-box {
   min-width: 0;
-  min-height: 90px;
+  min-height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -806,6 +876,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--paper-dark);
+  text-align: center;
 }
 
 .preview-count {
@@ -925,6 +996,7 @@
 .progress-track {
   position: relative;
   width: 100%;
+  flex-shrink: 0;
   height: 22px;
   background: var(--paper);
   border: 2px solid var(--bg-deep);
@@ -1014,12 +1086,28 @@
 }
 
 @media (max-width: 1024px) {
+  .booth {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .booth-shell {
+    height: 100%;
+    overflow: hidden;
+  }
+
   .booth-layout {
     grid-template-columns: 1fr;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--paper-dark) transparent;
   }
 
   .sidebar,
+  .workspace,
   .controls {
+    height: auto;
+    overflow: visible;
     border: none;
     border-bottom: 3px solid var(--bg-deep);
   }
@@ -1052,11 +1140,6 @@
     width: 38px;
   }
 
-  .controls {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
   .control {
     padding: 14px;
   }
@@ -1064,9 +1147,6 @@
   .filter-deck {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
-    max-height: 320px;
-    padding-right: 4px;
-    overflow-y: auto;
   }
 
   .filter-swatch {
