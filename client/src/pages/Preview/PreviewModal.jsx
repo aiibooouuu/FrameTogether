@@ -51,9 +51,6 @@ const completePhotos = useMemo(
     [photos]
 );
 
-const isMobile =
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 720px)").matches;
 
 useEffect(() => {
     if (!open) return;
@@ -98,23 +95,57 @@ useEffect(() => {
 if (!open) return null;
 
 const handleDownload = async () => {
-    if (!exportRef.current || !completePhotos.length) return;
+  if (!exportRef.current || !completePhotos.length) return;
 
-    setDownloading(true);
-    try {
+  setDownloading(true);
+  try {
     const canvas = await html2canvas(exportRef.current, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true,
+      backgroundColor: null,
+      scale: 2,
+      useCORS: true,
     });
 
-    const link = document.createElement("a");
-    link.download = `FrameTogether-${mode}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-    } finally {
-    setDownloading(false);
+    const blob = await new Promise((resolve) =>
+      canvas.toBlob(resolve, "image/png")
+    );
+
+    if (!blob) return;
+
+    const fileName = `FrameTogether-${mode}.png`;
+    const file = new File([blob], fileName, { type: "image/png" });
+
+    // Mobile-friendly path: use native share sheet (lets user Save Image / share)
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: "FrameTogether",
+        });
+        return;
+      } catch (shareError) {
+        // user cancelled share, or share failed — fall through to normal download
+        if (shareError?.name === "AbortError") return;
+      }
     }
+
+    // Desktop / fallback path
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = fileName;
+    link.href = url;
+    link.click();
+
+    // iOS Safari sometimes ignores the download attribute — open as a fallback
+    // so the user can long-press and "Save Image"
+    const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
+    if (isIOS) {
+      window.open(url, "_blank");
+    }
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+  } finally {
+    setDownloading(false);
+  }
 };
 
 const refreshMoodBoard = () => {
@@ -257,28 +288,24 @@ return (
             </div>
 
             <div className="actions">
-            <button
-                type="button"
-                className="shuffle-btn"
-                onClick={refreshMoodBoard}
-            >
-                <FaShuffle />
-                Shuffle Mood Board
-            </button>
-
-            {isMobile ? (
-                <p className="mobile-note">Download is available on desktop only.</p>
-            ) : (
                 <button
-                type="button"
-                className="download-btn"
-                onClick={handleDownload}
-                disabled={downloading || !completePhotos.length}
+                    type="button"
+                    className="shuffle-btn"
+                    onClick={refreshMoodBoard}
                 >
-                <FaDownload />
-                {downloading ? "Preparing..." : "Download"}
+                    <FaShuffle />
+                    Shuffle Mood Board
                 </button>
-            )}
+
+                <button
+                    type="button"
+                    className="download-btn"
+                    onClick={handleDownload}
+                    disabled={downloading || !completePhotos.length}
+                >
+                    <FaDownload />
+                    {downloading ? "Preparing..." : "Download"}
+                </button>
             </div>
         </aside>
 
