@@ -302,38 +302,33 @@
 
 /* Mobile */
 
-@media(max-width:700px){
+@media (max-width: 700px) {
+  .create-room {
+    align-items: flex-start;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding: 20px 16px;
+  }
 
-    .paper-card{
+  .paper-card {
+    width: 100%;
+    padding: 30px;
+  }
 
-        width:100%;
+  .paper-card h1 {
+    font-size: 2rem;
+  }
 
-        padding:30px;
+  .code-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 
-    }
-
-    .paper-card h1{
-
-        font-size:2rem;
-
-    }
-
-    .code-box{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:20px;
-
-    }
-
-    .continue-btn,
-    .copy-btn,
-    .secondary-btn{
-
-        width:100%;
-
-    }
-
+  .continue-btn,
+  .copy-btn,
+  .secondary-btn {
+    width: 100%;
+  }
 }
